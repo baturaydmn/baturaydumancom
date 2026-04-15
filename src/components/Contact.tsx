@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Mail, Phone, MapPin, ArrowUpRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { siteConfig } from '../config/site';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -40,19 +41,19 @@ export default function Contact() {
     {
       icon: <Mail className="w-5 h-5 text-gray-400" />,
       title: t('email_us'),
-      detail: 'mail@baturayduman.com',
-      link: 'mailto:mail@baturayduman.com'
+      detail: siteConfig.contact.email,
+      link: `mailto:${siteConfig.contact.email}`
     },
     {
       icon: <Phone className="w-5 h-5 text-gray-400" />,
       title: t('call_us'),
-      detail: '+90 533 120 6916',
-      link: 'tel:+905331206916'
+      detail: siteConfig.contact.phoneDisplay,
+      link: `tel:${siteConfig.contact.phoneLink}`
     },
     {
       icon: <MapPin className="w-5 h-5 text-gray-400" />,
       title: t('our_location'),
-      detail: 'Istanbul, Turkey'
+      detail: siteConfig.contact.location
     }
   ];
 

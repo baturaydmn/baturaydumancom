@@ -1,57 +1,75 @@
-# 🚀 Baturay Duman - Premium Personal Portfolio
+# 🚀 Baturay Duman - Premium Portfolio (OSS Edition)
 
-A sleek, highly interactive, and fully responsive personal portfolio built with modern front-end technologies. This project acts as a digital interactive resume that highlights my experiences, skills, and academic background while providing a deeply customizable cinematic experience for the visitor.
+A high-end, cinematic personal portfolio template built with **Next.js**, **Tailwind CSS v4**, and **Lucide Icons**. Designed for entrepreneurs, founders, and developers who want a premium, fast, and fully customizable digital presence.
 
-## ✨ Signature Features
+## ✨ Features
+- **🌍 Dynamic Multilingual Support**: Seamless TR/EN toggle with zero layout jump.
+- **🎨 Live Design System**: Real-time accent color swapping and Theme (Dark/Light) switching.
+- **🔎 UI Scaling**: Advanced zoom engine (0.8x - 1.2x) using root-relative scaling.
+- **📱 Fully Responsive**: Optimized for desktop, tablet, and mobile with high-fidelity glassmorphism.
+- **📧 Contact System**: Integrated form with automated email feedback support.
 
-- **🌐 Cross-Fade Multilingual System:** Native, seamless transition between **Turkish** and **English** using modern DOM manipulation (Zero layout jumps).
-- **🎨 Dynamic Component Styling Engine:**
-  - **Dark / Light Mode:** Fully cohesive theme toggling via standard `data-theme` architecture.
-  - **Live Palette Selection:** Allows the user to instantly swap the entire digital lighting, button gradients, glowing borders, and hover geometries to 5 distinct base colors (Navy Blue, Rose Red, Emerald Green, Amber Yellow, Violet).
-- **🔎 Dynamic Form-Scale (Zoom) Engine:** Offers a precise iOS-style segmented controller to zoom and manipulate the entire website's foundational metrics globally (from 0.8x up to 1.2x) seamlessly mapped to `rem` standards.
-- **🛡️ Custom CSS Animations:** Features deep, sophisticated animations directly implemented via Vanilla CSS, including mesmerizing `conic-gradients`, glassy floating capsules, and neon pulsing geometry.
-- **📧 Integrated Fast-Contact:** Custom form components ready to securely transfer inputs dynamically to the backend infrastructure.
+---
 
-## 🛠️ Technology Stack
+## 🛠️ Quick Start
 
-- **Framework:** [Next.js](https://nextjs.org/) (Pages Router)
-- **Styling Engine:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **State Management:** Custom tightly coupled React Context API (`ThemeContext`, `LanguageContext`)
-- **Icons:** [Lucide React](https://lucide.dev/)
-- **Type Safety:** TypeScript
+### 1. Prerequisites
+- Node.js 18.x or higher
+- NPM or PNPM
 
-## 📂 Project Architecture
-
-```text
-src/
-├── components/          # Reusable, logic-encapsulated UI sections
-│   ├── SettingsDropdown # The central brain for UI modification (Themes, Colors, Languages, Scales)
-│   ├── Hero             # The foundational landing viewpoint
-│   ├── CareerSection    # Academic & Work timeline tracker
-│   └── Contact          # Professional entry forms
-├── contexts/            # Global operational hubs
-│   ├── LanguageContext  # Handles bilingual state and dynamic text transformations
-│   └── ThemeContext     # Handles generic structural stylings, zooming, and palettes
-├── pages/               # Routing layer
-└── styles/              # Global variables, custom fonts, pure CSS animations
-```
-
-## 🚀 Getting Started
-
-To run this project locally, execute the following commands in your terminal:
-
+### 2. Installation
 ```bash
-# 1. Install Dependencies
-npm install
+# Clone the repository
+git clone https://github.com/baturayduman/baturaydumancom.git
+cd baturaydumancom
 
-# 2. Run the Development Server
-npm run dev
+# Install dependencies
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to experience the environment.
+### 3. Environment Setup
+Create a `.env.local` file in the root directory and add your SMTP credentials for the contact form:
+```env
+SMTP_HOST=smtp.your-provider.com
+SMTP_PORT=587
+SMTP_USER=your-email@example.com
+SMTP_PASS=your-app-password
+CONTACT_RECEIVER=your-receiving-email@example.com
+```
+*(Note: A template is provided in `.env.local.example`)*
 
-## 🧠 Design Philosophy
+### 4. Customization
+You don't need to dig through code to change personal info! Simply edit **`src/config/site.ts`**:
+```typescript
+export const siteConfig = {
+  author: "Your Name",
+  poweredBy: "Your Studio",
+  socialLinks: {
+    instagram: "...",
+    twitter: "...",
+    github: "...",
+    linkedin: "..."
+  }
+};
+```
 
-The core of this portfolio orbits the `glass-panel` methodology. Instead of relying on strict hardcoded box models, everything floats within highly calculated blurred translucent layers (`backdrop-blur-xl`, `border-white/10`). 
+### 5. Deployment
+```bash
+npm run build
+npm run start
+```
+Recommended deployment: **Vercel** or **Netlify**.
 
-The interface explicitly avoids bloated 3rd-party animation and UI libraries (like Framer Motion or Material UI) to prove high-fidelity front-end engineering proficiency and to keep the bundle size surgically thin.
+---
+
+## 📂 Architecture
+- `src/components`: UI Components (Hero, Career, Contact, Settings, Footer).
+- `src/contexts`: State logic (Theme, Language, Scaling).
+- `src/config`: Centralized site settings for OSS users.
+- `src/styles`: Theme variables and custom CSS animations.
+
+## 📄 License
+Open Source - Free to use for personal portfolios. Credit is appreciated!
+
+---
+*Generated with ❤️ by Baturay Duman & powered by Voi Digital.*

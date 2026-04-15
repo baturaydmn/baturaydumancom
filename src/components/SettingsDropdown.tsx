@@ -78,7 +78,10 @@ export default function SettingsDropdown() {
       </button>
 
       {/* Main Settings Dropdown Panel - Simplified Grid-Locked Transition to prevent animation coordinate mismatch with the absolutely sliding language button */}
-      <div className={`absolute top-16 right-0 w-64 p-4 glass-panel rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-2xl border border-white/10 flex flex-col gap-6 origin-top-right transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-40 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div 
+        className={`absolute top-16 right-0 w-64 p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] backdrop-blur-3xl border border-white/10 flex flex-col gap-6 origin-top-right transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-40 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        style={{ backgroundColor: 'color-mix(in srgb, var(--bg-color) 85%, transparent)' }}
+      >
 
         {/* Top Row: Theme & Language Layout Reserve */}
         <div className="flex items-center justify-between">

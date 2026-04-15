@@ -4,6 +4,7 @@ import SettingsDropdown from '../components/SettingsDropdown';
 import Hero from '../components/Hero';
 import AboutExperience from '../components/AboutExperience';
 import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <AboutExperience />
         <Contact />
+        <Footer />
       </main>
     </>
   );
