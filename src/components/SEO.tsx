@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 export default function SEO() {
   const title = "Baturay Duman | Digital Architect & Entrepreneur";
-  const defaultDescription = "Baturay Duman yetenekli bir girişimci, dijital ürün geliştirici ve sistem mühendisidir. Robotik, Yapay Zeka (AI) Otomasyonu ve sürdürülebilir ölçeklenebilir yazılım çözümleri üreterek karmaşık fikirleri güçlü dijital ürünlere dönüştürür.";
+  const defaultDescription = "Girişimci, dijital ürün geliştirici ve sistem mühendisidir. Robotik, Yapay Zeka (AI) Otomasyonu ve sürdürülebilir ölçeklenebilir yazılım çözümleri.";
   const siteUrl = "https://baturayduman.com"; // Replace with your production domain
   
   const keywords = "Baturay Duman, baturay, duman, Entrepreneur, Girişimci, Kurucu, Founder, Software Engineer, Yazılım Mühendisi, Web Developer, AI Automation, Yapay Zeka Otomasyonu, Dijital Ürünler, Digital Systems, Robotik, Robotics, Istanbul, Portfolio, Özgeçmiş";
