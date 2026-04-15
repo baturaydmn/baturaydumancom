@@ -1,40 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🚀 Baturay Duman - Premium Personal Portfolio
 
-## Getting Started
+A sleek, highly interactive, and fully responsive personal portfolio built with modern front-end technologies. This project acts as a digital interactive resume that highlights my experiences, skills, and academic background while providing a deeply customizable cinematic experience for the visitor.
 
-First, run the development server:
+## ✨ Signature Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **🌐 Cross-Fade Multilingual System:** Native, seamless transition between **Turkish** and **English** using modern DOM manipulation (Zero layout jumps).
+- **🎨 Dynamic Component Styling Engine:**
+  - **Dark / Light Mode:** Fully cohesive theme toggling via standard `data-theme` architecture.
+  - **Live Palette Selection:** Allows the user to instantly swap the entire digital lighting, button gradients, glowing borders, and hover geometries to 5 distinct base colors (Navy Blue, Rose Red, Emerald Green, Amber Yellow, Violet).
+- **🔎 Dynamic Form-Scale (Zoom) Engine:** Offers a precise iOS-style segmented controller to zoom and manipulate the entire website's foundational metrics globally (from 0.8x up to 1.2x) seamlessly mapped to `rem` standards.
+- **🛡️ Custom CSS Animations:** Features deep, sophisticated animations directly implemented via Vanilla CSS, including mesmerizing `conic-gradients`, glassy floating capsules, and neon pulsing geometry.
+- **📧 Integrated Fast-Contact:** Custom form components ready to securely transfer inputs dynamically to the backend infrastructure.
+
+## 🛠️ Technology Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (Pages Router)
+- **Styling Engine:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **State Management:** Custom tightly coupled React Context API (`ThemeContext`, `LanguageContext`)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Type Safety:** TypeScript
+
+## 📂 Project Architecture
+
+```text
+src/
+├── components/          # Reusable, logic-encapsulated UI sections
+│   ├── SettingsDropdown # The central brain for UI modification (Themes, Colors, Languages, Scales)
+│   ├── Hero             # The foundational landing viewpoint
+│   ├── CareerSection    # Academic & Work timeline tracker
+│   └── Contact          # Professional entry forms
+├── contexts/            # Global operational hubs
+│   ├── LanguageContext  # Handles bilingual state and dynamic text transformations
+│   └── ThemeContext     # Handles generic structural stylings, zooming, and palettes
+├── pages/               # Routing layer
+└── styles/              # Global variables, custom fonts, pure CSS animations
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+To run this project locally, execute the following commands in your terminal:
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+# 1. Install Dependencies
+npm install
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+# 2. Run the Development Server
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) with your browser to experience the environment.
 
-## Learn More
+## 🧠 Design Philosophy
 
-To learn more about Next.js, take a look at the following resources:
+The core of this portfolio orbits the `glass-panel` methodology. Instead of relying on strict hardcoded box models, everything floats within highly calculated blurred translucent layers (`backdrop-blur-xl`, `border-white/10`). 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+The interface explicitly avoids bloated 3rd-party animation and UI libraries (like Framer Motion or Material UI) to prove high-fidelity front-end engineering proficiency and to keep the bundle size surgically thin.
