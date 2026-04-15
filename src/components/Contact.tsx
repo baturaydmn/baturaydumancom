@@ -63,7 +63,7 @@ export default function Contact() {
         
         {/* Left Side Info */}
         <div className="flex flex-col">
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full w-max mb-8">
+          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-dynamic-2xl w-max mb-8">
             <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-xs opacity-75">?</span>
             <span className="text-sm font-medium tracking-wide">{t('contact_label')}</span>
           </div>
@@ -80,7 +80,7 @@ export default function Contact() {
               const Content = (
                 <>
                   <div className="flex items-center gap-6">
-                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                    <div className="w-14 h-14 rounded-dynamic-2xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                       {info.icon}
                     </div>
                     <div className="flex flex-col">
@@ -157,12 +157,12 @@ export default function Contact() {
             </div>
 
             {status === 'success' && (
-              <div className="text-green-400 flex items-center gap-2 text-sm bg-green-400/10 p-4 rounded-xl border border-green-400/20">
+              <div className="text-green-400 flex items-center gap-2 text-sm bg-green-400/10 p-4 rounded-dynamic-xl border border-green-400/20">
                 <CheckCircle2 className="w-5 h-5 flex-shrink-0" /> {t('success_msg')}
               </div>
             )}
             {status === 'error' && (
-              <div className="text-red-400 flex items-center gap-2 text-sm bg-red-400/10 p-4 rounded-xl border border-red-400/20">
+              <div className="text-red-400 flex items-center gap-2 text-sm bg-red-400/10 p-4 rounded-dynamic-xl border border-red-400/20">
                 <AlertCircle className="w-5 h-5 flex-shrink-0" /> {t('error_msg')}
               </div>
             )}

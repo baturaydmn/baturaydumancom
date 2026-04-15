@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme, AppScale } from '../contexts/ThemeContext';
-import { Settings, Moon, Sun, Monitor, Type } from 'lucide-react';
+import { Settings, Moon, Sun, Monitor, Type, RotateCcw } from 'lucide-react';
 
 const ACCENT_COLORS = [
   { id: 'blue', hex: '#3B82F6' },
@@ -22,7 +22,7 @@ const SCALES = [
 export default function SettingsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
-  const { theme, toggleTheme, accentColor, setAccentColor, appScale, setAppScale } = useTheme();
+  const { theme, toggleTheme, accentColor, setAccentColor, appScale, setAppScale, borderRadius, setBorderRadius } = useTheme();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close on outside click
@@ -79,8 +79,11 @@ export default function SettingsDropdown() {
 
       {/* Main Settings Dropdown Panel - Simplified Grid-Locked Transition to prevent animation coordinate mismatch with the absolutely sliding language button */}
       <div 
-        className={`absolute top-16 right-0 w-64 p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] backdrop-blur-3xl border border-white/10 flex flex-col gap-6 origin-top-right transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-40 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-        style={{ backgroundColor: 'color-mix(in srgb, var(--bg-color) 85%, transparent)' }}
+        className={`absolute top-16 right-0 w-64 p-4 shadow-[0_20px_40px_rgba(0,0,0,0.5)] backdrop-blur-3xl border border-white/10 flex flex-col gap-6 origin-top-right transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-40 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        style={{ 
+          backgroundColor: 'color-mix(in srgb, var(--bg-color) 85%, transparent)',
+          borderRadius: 'var(--radius-base)'
+        }}
       >
 
         {/* Top Row: Theme & Language Layout Reserve */}
@@ -151,6 +154,61 @@ export default function SettingsDropdown() {
                   </button>
                 );
               })}
+           </div>
+        </div>
+
+        {/* Border Radius Section */}
+        <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-sm border-2 border-gray-400" style={{ borderRadius: borderRadius / 4 }}></div>
+                <span className="text-xs font-semibold text-gray-400 tracking-wider uppercase">{t('border_radius')}</span>
+              </div>
+              <button 
+                onClick={() => setBorderRadius(16)}
+                className="p-1 px-2 rounded-lg bg-white/5 hover:bg-white/10 text-[10px] font-bold text-gray-400 hover:text-white transition-all flex items-center gap-1.5 border border-white/5"
+                title={t('reset_default')}
+              >
+                <RotateCcw className="w-3 h-3" />
+                {t('default').toUpperCase()}
+              </button>
+            </div>
+
+           <div className="flex items-center justify-between text-xs font-medium opacity-90 h-4">
+              <span className="text-[var(--theme-accent)] transition-all">
+                {borderRadius === 0 ? '0px' : borderRadius === 16 ? t('default') : `${borderRadius}px`}
+              </span>
+           </div>
+
+           <div className="relative w-full h-8 flex items-center group">
+              {/* Custom Styled Slider */}
+              <input 
+                type="range"
+                min="0"
+                max="32"
+                value={borderRadius}
+                onChange={(e) => setBorderRadius(parseInt(e.target.value))}
+                className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-[var(--theme-accent)] hover:bg-white/20 transition-all outline-none"
+                style={{
+                  background: `linear-gradient(to right, var(--theme-accent) ${(borderRadius / 32) * 100}%, rgba(255,255,255,0.1) ${(borderRadius / 32) * 100}%)`
+                }}
+              />
+              <style jsx>{`
+                input[type='range']::-webkit-slider-thumb {
+                  appearance: none;
+                  width: 16px;
+                  height: 16px;
+                  background: white;
+                  border-radius: 50%;
+                  border: 2px solid var(--theme-accent);
+                  cursor: pointer;
+                  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+                  transition: transform 0.2s ease;
+                }
+                input[type='range']::-webkit-slider-thumb:hover {
+                  transform: scale(1.2);
+                }
+              `}</style>
            </div>
         </div>
 

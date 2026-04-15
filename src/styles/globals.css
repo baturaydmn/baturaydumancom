@@ -33,6 +33,7 @@
   --btn-text: #000000;
   --input-bg: rgba(255, 255, 255, 0.05);
   --gradient-alpha: 4%;  /* Modern percentage logic for generic color mixing */
+  --radius-base: 16px;
 }
 
 [data-accent='red'] { --theme-accent: #F43F5E; }
@@ -71,7 +72,8 @@ body {
     background-color: var(--glass-bg);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(16px);
-    @apply rounded-2xl transition duration-300;
+    border-radius: var(--radius-base);
+    @apply transition duration-300;
   }
   .glass-panel:hover {
     background-color: var(--glass-hover);
@@ -81,7 +83,8 @@ body {
     border: 1px solid var(--glass-border) !important;
     color: var(--text-main) !important;
     font-family: inherit;
-    @apply rounded-xl p-4 w-full outline-none transition duration-500 focus:border-blue-accent resize-none;
+    border-radius: calc(var(--radius-base) * 0.75) !important;
+    @apply p-4 w-full outline-none transition duration-500 focus:border-blue-accent resize-none;
   }
   .input-field::placeholder {
     color: var(--text-muted) !important;
@@ -90,7 +93,14 @@ body {
   .btn-primary {
     background-color: var(--btn-bg);
     color: var(--btn-text);
-    @apply font-semibold py-3 px-6 rounded-xl hover:-translate-y-[2px] opacity-90 hover:opacity-100 hover:shadow-lg transition duration-300 flex items-center justify-center gap-2;
+    border-radius: calc(var(--radius-base) * 0.75);
+    @apply font-semibold py-3 px-6 hover:-translate-y-[2px] opacity-90 hover:opacity-100 hover:shadow-lg transition duration-300 flex items-center justify-center gap-2;
+  }
+  .rounded-dynamic-xl {
+    border-radius: calc(var(--radius-base) * 0.75) !important;
+  }
+  .rounded-dynamic-2xl {
+    border-radius: var(--radius-base) !important;
   }
 }
 

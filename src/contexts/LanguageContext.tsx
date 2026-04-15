@@ -45,7 +45,9 @@ const translations = {
     scale_lg: '+1 Kademe (Büyük)',
     scale_xl: '+2 Kademe (En Büyük)',
     settings: 'Ayarlar',
-    language_selection: 'Dil Seçimi'
+    language_selection: 'Dil Seçimi',
+    border_radius: 'Köşe Keskinliği',
+    reset_default: 'Varsayılana Dön'
   },
   en: {
     hero_title: 'Hello, I am Baturay Duman',
@@ -82,7 +84,9 @@ const translations = {
     scale_lg: 'Level +1 (Large)',
     scale_xl: 'Level +2 (Largest)',
     settings: 'Settings',
-    language_selection: 'Language Selection'
+    language_selection: 'Language Selection',
+    border_radius: 'Border Radius',
+    reset_default: 'Reset to Default'
   }
 };
 

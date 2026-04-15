@@ -11,6 +11,8 @@ interface ThemeContextType {
   setAccentColor: (color: AccentColor) => void;
   appScale: AppScale;
   setAppScale: (scale: AppScale) => void;
+  borderRadius: number;
+  setBorderRadius: (radius: number) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -19,6 +21,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [theme, setTheme] = useState<Theme>('dark');
   const [accentColor, setAccentColor] = useState<AccentColor>('blue');
   const [appScale, setAppScaleInternal] = useState<AppScale>(3);
+  const [borderRadius, setBorderRadiusInternal] = useState<number>(16);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme') as Theme | null;
@@ -36,6 +39,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const storedScale = localStorage.getItem('appScale');
     if (storedScale) {
       setAppScaleInternal(Number(storedScale) as AppScale);
+    }
+
+    const storedRadius = localStorage.getItem('borderRadius');
+    if (storedRadius) {
+      setBorderRadiusInternal(Number(storedRadius));
     }
   }, []);
 
@@ -55,12 +63,26 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     localStorage.setItem('appScale', appScale.toString());
   }, [appScale]);
 
+  useEffect(() => {
+    document.documentElement.style.setProperty('--radius-base', `${borderRadius}px`);
+    localStorage.setItem('borderRadius', borderRadius.toString());
+  }, [borderRadius]);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, accentColor, setAccentColor, appScale, setAppScale: setAppScaleInternal }}>
+    <ThemeContext.Provider value={{ 
+      theme, 
+      toggleTheme, 
+      accentColor, 
+      setAccentColor, 
+      appScale, 
+      setAppScale: setAppScaleInternal,
+      borderRadius,
+      setBorderRadius: setBorderRadiusInternal
+    }}>
       {children}
     </ThemeContext.Provider>
   );
