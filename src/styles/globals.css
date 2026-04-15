@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Janelotus';
+  src: url('/Janelotus.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --color-blue-accent: var(--theme-accent);
+  --color-main: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-glass: var(--glass-bg);
+  /* Override literal Tailwind colors for seamless universal Light/Dark Mode switch */
+  --color-white: var(--text-main);
+  --color-black: var(--bg-color);
+  --color-gray-200: var(--text-main);
+  --color-gray-300: var(--text-muted);
+  --color-gray-400: var(--text-muted);
+  --color-gray-500: var(--text-muted);
+}
+
+:root {
+  --theme-accent: #3B82F6;
+  --bg-color: #030706;
+  --text-main: #F0FDF4;
+  --text-muted: #9ca3af;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-hover: rgba(255, 255, 255, 0.1);
+  --btn-bg: #ffffff;
+  --btn-text: #000000;
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --gradient-alpha: 4%;  /* Modern percentage logic for generic color mixing */
+}
+
+[data-accent='red'] { --theme-accent: #F43F5E; }
+[data-accent='emerald'] { --theme-accent: #10B981; }
+[data-accent='amber'] { --theme-accent: #F59E0B; }
+[data-accent='violet'] { --theme-accent: #8B5CF6; }
+
+[data-theme='light'] {
+  --bg-color: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --glass-bg: rgba(0, 0, 0, 0.04);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-hover: rgba(0, 0, 0, 0.08);
+  --btn-bg: #0f172a;
+  --btn-text: #ffffff;
+  --input-bg: rgba(0, 0, 0, 0.04);
+  --gradient-alpha: 15%;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, sans-serif;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--theme-accent) var(--gradient-alpha), transparent) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--theme-accent) var(--gradient-alpha), transparent) 0%, transparent 40%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+@layer utilities {
+  .glass-panel {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    @apply rounded-2xl transition duration-300;
+  }
+  .glass-panel:hover {
+    background-color: var(--glass-hover);
+  }
+  .input-field {
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-main) !important;
+    font-family: inherit;
+    @apply rounded-xl p-4 w-full outline-none transition duration-500 focus:border-blue-accent resize-none;
+  }
+  .input-field::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 1;
+  }
+  .btn-primary {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    @apply font-semibold py-3 px-6 rounded-xl hover:-translate-y-[2px] opacity-90 hover:opacity-100 hover:shadow-lg transition duration-300 flex items-center justify-center gap-2;
+  }
+}
+
+/* Custom Animation for Rotating Glowing Border */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-border {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
+}
+
+.glow-border-spin {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--angle), transparent 50%, var(--theme-accent) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin-border 4s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom Animation for Pulsing Text */
+@keyframes text-pulse-glow {
+  0% { text-shadow: 0 0 5px transparent; }
+  50% { text-shadow: 0 0 20px color-mix(in srgb, var(--theme-accent) 90%, transparent), 0 0 10px color-mix(in srgb, var(--theme-accent) 50%, transparent); color: var(--theme-accent); }
+  100% { text-shadow: 0 0 5px transparent; }
+}
+
+.text-glow-anim {
+  animation: text-pulse-glow 4s ease-in-out infinite;
+}
+
+
